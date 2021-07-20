@@ -1,0 +1,24 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    font-family: 'Barlow Semi Condensed', sans-serif;
+}
+
+.wrapper{
+    background: radial-gradient(circle, #1f3756 0%, #141539 100%);
+    color: white;
+
+    text-align: center;
+    min-height: 100vh;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 20px;
+
+    min-height: 95vh;
+}

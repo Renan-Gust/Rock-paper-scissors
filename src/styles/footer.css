@@ -1,0 +1,24 @@
+footer{
+    width: 100%;
+    text-align: end;
+}
+
+button.rules{
+    padding: 7px 25px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+
+
+    background: none;
+    color: #97a2b4;
+
+    border: 3px solid #606e85;
+    border-radius: 0.4rem;
+}
+
+button.rules:hover{
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #3b4363;
+    cursor: pointer;
+}

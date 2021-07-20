@@ -1,0 +1,55 @@
+a.button div{
+    width: 145px;
+    height: 145px;
+
+    position: relative;
+    background-color: white;
+
+    border-radius: 50%;
+    border: 18px solid;
+
+    transition: 0.2s;
+    cursor: pointer;
+    text-align: center;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+a.button div:hover{
+    transform: scale(1.2);
+}
+
+a.paper div{
+    border-color: #5671f5;
+    box-shadow: inset 0px 8px rgb(63 55 55 / 10%), 0px 8px #0e34f1;
+}
+
+a.rock div{
+    left: 132px;
+    top: 56px;
+
+    border-color: #dd405d;
+    box-shadow: inset 0px 8px rgb(63 55 55 / 10%), 0px 8px #b21f3a;
+}
+
+a.scissors div{
+    left: 255px;
+    bottom: 294px;
+
+    border-color: #eca922;
+    box-shadow: inset 0px 8px rgb(63 55 55 / 10%), 0px 8px #b27c10;
+}
+
+a.picked div{
+    left: 0;
+    bottom: 0;
+    top: 0;
+}
+
+a.button.house-picked div{
+    left: 0;
+    bottom: 0;
+    top: 0;
+}
