@@ -13,16 +13,19 @@ import bgTriangleImg from '../images/bg-triangle.svg'
 
 export const Home = () => {
     const [playerPicked, setPlayerPicked] = useState(null)
-    const [id, setId] = useState(null)
-    const [image, setImage] = useState(null)
+    const [playerId, setPlayerId] = useState(null)
+    const [playerImage, setPlayerImage] = useState(null)
 
     let [housePicked, setHousePicked] = useState(null)
 
-    const [playerWins, setPlayerWins] = useState(false);
+    const [playerWins, setPlayerWins] = useState(false)
+    const [houseWins, setHouseWins] = useState(false)
 
     const [resultMessage, setResultMessage] = useState("")
 
-    // useEffect(() => {}, [housePicked])
+    useEffect(() => {
+        chooseWinner()
+    }, [housePicked, playerWins, houseWins])
 
     const array = [
         {
@@ -46,49 +49,61 @@ export const Home = () => {
     ]
 
     function handlePlay(item) {
-        setId(item.id)
         setPlayerPicked(item.class)
-        setImage(item.img)
+        setPlayerId(item.id)
+        setPlayerImage(item.img)
 
-        const chooseRandom = array[(Math.random() * (array.length - 1)).toFixed(0)]
+        let chooseRandom = array[(Math.random() * 2).toFixed(0)]
         setHousePicked(chooseRandom)
     }
 
     function handlePlayAgain(){
-        setId(null)
         setPlayerPicked(null)
-        setImage(null)
+        setPlayerId(null)
+        setPlayerImage(null)
+        setHousePicked(null)
+
         setPlayerWins(false)
+        setHouseWins(false)
     }
 
     function chooseWinner() {
-        console.log(housePicked.class)
+        if(housePicked !== null) {
+            if (housePicked.class === "paper" && playerPicked === "scissors") {
+                setPlayerWins(true)
+                setHouseWins(false)
+                console.log("Ganhou")
+            } else if (housePicked.class === "scissors" && playerPicked === "rock") {
+                setPlayerWins(true)
+                setHouseWins(false)
+                console.log("ganhou")
+            } else if (housePicked.class === "rock" && playerPicked === "paper") {
+                setPlayerWins(true)
+                setHouseWins(false)
+                console.log("ganhou")
+            } else if (housePicked.class === "rock" && playerPicked === "scissors") {
+                setPlayerWins(false)
+                setHouseWins(true)
+                console.log("Perdeu")
+            } else if (housePicked.class === "scissors" && playerPicked === "paper") {
+                setPlayerWins(false)
+                setHouseWins(true)
+                console.log("Perdeu")
+            } else if (housePicked.class === "paper" && playerPicked === "rock") {
+                setPlayerWins(false)
+                setHouseWins(true)
+                console.log("Perdeu")
+            } else {
+                console.log("Empate")
+            }
 
-        if (housePicked.class === "rock" && playerPicked === "scissors") {
-            // setPlayerWins(false);
-            console.log("Perdeu")
-
-        } else if (housePicked.class === "rock" && playerPicked === "paper") {
-            // setPlayerWins(true);
-            console.log("Ganhou")
-
-        } else if (housePicked.class === "scissors" && playerPicked === "paper") {
-            // setPlayerWins(false);
-            console.log("Perdeu")
-
-        } else if (housePicked.class === "scissors" && playerPicked === "rock") {
-            // setPlayerWins(true);
-            console.log("Ganhou")
-
-        } else if (housePicked.class === "paper" && playerPicked === "rock") {
-            // setPlayerWins(false);
-            console.log("Perdeu")
-
-        } else if (housePicked.class === "paper" && playerPicked === "scissors") {
-            // setPlayerWins(true);
-            console.log("Ganhou")
-        } else {
-            console.log("Empate")
+            if (playerWins) {
+                setResultMessage("You Win")
+            } else if(houseWins){
+                setResultMessage("You Lose")
+            } else {
+                setResultMessage("Tie")
+            }
         }
     }
 
@@ -96,34 +111,30 @@ export const Home = () => {
         <div className="container">
             <Header />
             
-            <div className={id !== null ? "play width" : "play"}>
-                {id !== null ?
+            <div className={playerId !== null ? "play width" : "play"}>
+                {playerId !== null ?
                     <div className="result-wrapper">
                         <div className="your-pick">
-                            <Button className={"button " + "picked " + playerPicked} key={id}>
+                            <Button className={"button " + "picked " + playerPicked} key={playerId}>
                                 <div>
-                                    <img src={image} alt={image} />
+                                    <img src={playerImage} alt={playerImage} />
                                 </div>
                             </Button>
                         </div>
 
                         <div className="result">
-                            <h3>Você </h3>
+                            <h3>{resultMessage}</h3>
                             <button onClick={handlePlayAgain} className="play-again">Play Again</button>
                         </div>
 
                         <div className="house-pick">
-                            {housePicked !== null && (
-                                <>
-                                    <Button className={"button " + "house-picked " + housePicked.class} key={housePicked.id}>
-                                        <div>
-                                            <img src={housePicked.img} alt={housePicked.img} />
-                                        </div>
-                                    </Button>
-
-                                    { chooseWinner() }
-                                </>
-                            )}
+                            <>
+                                <Button className={"button " + "house-picked " + housePicked.class} key={housePicked.id}>
+                                    <div>
+                                        <img src={housePicked.img} alt={housePicked.img} />
+                                    </div>
+                                </Button>
+                            </>
                         </div>
                     </div>
                 :
