@@ -1,6 +1,6 @@
 import '../styles/header.css'
 
-export const Header = () => {
+export const Header = (props) => {
     return(
         <header>
             <div className="content">
@@ -12,7 +12,9 @@ export const Header = () => {
 
                 <div className="score-box">
                     <div className="score-box-title">Score</div>
-                    <div className="score-box-score">0</div>
+                    <div className="score-box-score">
+                        {props.score}
+                    </div>
                 </div>
             </div>
         </header>

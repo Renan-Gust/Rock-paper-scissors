@@ -1,0 +1,106 @@
+@media(min-width: 320px){
+    a.scissors div{
+        left: 193px;
+    }
+
+    a.rock div{
+        left: 99px;    
+    }
+
+    .result-wrapper{
+        flex-direction: column;
+    }
+
+    .result{
+        order: 2;
+        position: relative;
+        bottom: 192px;
+    }
+
+    .your-pick{
+        position: relative;
+        right: 93px;
+    }
+    
+    .house-pick{
+        position: relative;
+        top: -218px;
+        left: 97px;
+    }
+
+    .your-pick h3,
+    .house-pick h3{
+        order: 1;
+    }
+    
+    footer{
+        text-align: center;
+        margin-bottom: 20px;
+    }
+}
+
+@media(min-width: 390px){    
+    a.scissors div{
+        left: 204px;
+    }
+
+    a.rock div{
+        left: 106px;
+    }
+}
+
+@media(min-width: 400px){    
+    a.scissors div{
+        left: 216px;
+    }
+
+    a.rock div{
+        left: 111px;
+    }
+}
+
+@media(min-width: 425px){    
+    a.scissors div{
+        left: 239px;
+    }
+
+    a.rock div{
+        left: 125px;
+    }
+}
+
+@media(min-width: 768px){    
+    a.scissors div{
+        left: 255px;
+    }
+
+    a.rock div{
+        left: 132px;
+    }
+
+    .result-wrapper{
+        flex-direction: row;
+    }
+
+    .result{
+        order: initial;
+        position: initial;
+        bottom: 0;
+    }
+
+    .your-pick,
+    .house-pick{
+        position: initial;
+        right: 0;
+        top: 0;
+    }
+
+    .your-pick h3,
+    .house-pick h3{
+        order: initial;
+    }
+
+    footer{
+        text-align: end;
+    }
+}

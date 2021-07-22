@@ -22,6 +22,7 @@ export const Home = () => {
     const [houseWins, setHouseWins] = useState(false)
 
     const [resultMessage, setResultMessage] = useState("")
+    const [score, setScore] = useState(0)
 
     useEffect(() => {
         chooseWinner()
@@ -72,49 +73,44 @@ export const Home = () => {
             if (housePicked.class === "paper" && playerPicked === "scissors") {
                 setPlayerWins(true)
                 setHouseWins(false)
-                console.log("Ganhou")
             } else if (housePicked.class === "scissors" && playerPicked === "rock") {
                 setPlayerWins(true)
                 setHouseWins(false)
-                console.log("ganhou")
             } else if (housePicked.class === "rock" && playerPicked === "paper") {
                 setPlayerWins(true)
                 setHouseWins(false)
-                console.log("ganhou")
             } else if (housePicked.class === "rock" && playerPicked === "scissors") {
                 setPlayerWins(false)
                 setHouseWins(true)
-                console.log("Perdeu")
             } else if (housePicked.class === "scissors" && playerPicked === "paper") {
                 setPlayerWins(false)
                 setHouseWins(true)
-                console.log("Perdeu")
             } else if (housePicked.class === "paper" && playerPicked === "rock") {
                 setPlayerWins(false)
                 setHouseWins(true)
-                console.log("Perdeu")
-            } else {
-                console.log("Empate")
             }
 
             if (playerWins) {
-                setResultMessage("You Win")
+                setResultMessage("You Won")
+                setScore(score + 1)
             } else if(houseWins){
-                setResultMessage("You Lose")
+                setResultMessage("You Lost")
+                setScore(score - 1)
             } else {
-                setResultMessage("Tie")
+                setResultMessage("Tied")
             }
         }
     }
 
     return(
         <div className="container">
-            <Header />
+            <Header score={score} />
             
             <div className={playerId !== null ? "play width" : "play"}>
                 {playerId !== null ?
                     <div className="result-wrapper">
                         <div className="your-pick">
+                            <h3>You picked</h3>
                             <Button className={"button " + "picked " + playerPicked} key={playerId}>
                                 <div>
                                     <img src={playerImage} alt={playerImage} />
@@ -128,13 +124,12 @@ export const Home = () => {
                         </div>
 
                         <div className="house-pick">
-                            <>
-                                <Button className={"button " + "house-picked " + housePicked.class} key={housePicked.id}>
-                                    <div>
-                                        <img src={housePicked.img} alt={housePicked.img} />
-                                    </div>
-                                </Button>
-                            </>
+                            <h3>The house picked</h3>
+                            <Button className={"button " + "house-picked " + housePicked.class} key={housePicked.id}>
+                                <div>
+                                    <img src={housePicked.img} alt={housePicked.img} />
+                                </div>
+                            </Button>
                         </div>
                     </div>
                 :

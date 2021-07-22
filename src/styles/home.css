@@ -51,3 +51,15 @@ button.play-again:hover{
     margin-bottom: 10px;
     margin: 20px 0;
 }
+
+.your-pick,
+.house-pick{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.your-pick h3,
+.house-pick h3{
+    text-transform: uppercase;
+}

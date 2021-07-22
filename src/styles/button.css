@@ -27,7 +27,6 @@ a.paper div{
 }
 
 a.rock div{
-    left: 132px;
     top: 56px;
 
     border-color: #dd405d;
@@ -35,7 +34,6 @@ a.rock div{
 }
 
 a.scissors div{
-    left: 255px;
     bottom: 294px;
 
     border-color: #eca922;
@@ -43,7 +41,7 @@ a.scissors div{
 }
 
 a.picked div{
-    left: 0;
+    left: 0 !important;
     bottom: 0;
     top: 0;
 }
