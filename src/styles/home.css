@@ -30,15 +30,8 @@ div.play > img{
     background-color: white;
     color: #2a46c0;
 
-    text-decoration: none;
-    text-transform: uppercase;
     font-size: 0.8em;
-    
     padding: 10px 35px;
-    border-radius: 0.4rem;
-    border: 0;
-
-    cursor: pointer;
 }
 
 button.play-again:hover{
@@ -46,7 +39,6 @@ button.play-again:hover{
 }
 
 .result h3{
-    text-transform: uppercase;
     font-size: 2.5em;
     margin-bottom: 10px;
     margin: 20px 0;
@@ -57,9 +49,4 @@ button.play-again:hover{
     display: flex;
     flex-direction: column;
     gap: 50px;
-}
-
-.your-pick h3,
-.house-pick h3{
-    text-transform: uppercase;
 }

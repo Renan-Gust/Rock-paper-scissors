@@ -22,3 +22,17 @@
 
     min-height: 95vh;
 }
+
+h1, h3{
+    text-transform: uppercase;
+}
+
+button{
+    border: 0;
+    border-radius: 0.4rem;
+    
+    text-transform: uppercase;
+    text-decoration: none;
+
+    cursor: pointer;
+}

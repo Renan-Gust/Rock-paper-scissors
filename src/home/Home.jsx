@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 
 import { Header } from '../components/Header'
+import { Pick } from '../components/Pick'
 import { Button } from '../components/Button'
 import { Footer } from '../components/Footer'
 
@@ -20,11 +21,13 @@ export const Home = () => {
 
     const [playerWins, setPlayerWins] = useState(false)
     const [houseWins, setHouseWins] = useState(false)
+    const [time, setTime] = useState(false)
 
     const [resultMessage, setResultMessage] = useState("")
     const [score, setScore] = useState(0)
 
     useEffect(() => {
+        setTimeout(() => setTime(true), 3000)
         chooseWinner()
     }, [housePicked, playerWins, houseWins])
 
@@ -66,6 +69,7 @@ export const Home = () => {
 
         setPlayerWins(false)
         setHouseWins(false)
+        setTime(false)
     }
 
     function chooseWinner() {
@@ -105,31 +109,37 @@ export const Home = () => {
     return(
         <div className="container">
             <Header score={score} />
-            
+
             <div className={playerId !== null ? "play width" : "play"}>
                 {playerId !== null ?
                     <div className="result-wrapper">
                         <div className="your-pick">
                             <h3>You picked</h3>
-                            <Button className={"button " + "picked " + playerPicked} key={playerId}>
+                            <Pick className={"button " + "picked " + playerPicked} key={playerId}>
                                 <div>
                                     <img src={playerImage} alt={playerImage} />
                                 </div>
-                            </Button>
+                            </Pick>
                         </div>
 
-                        <div className="result">
-                            <h3>{resultMessage}</h3>
-                            <button onClick={handlePlayAgain} className="play-again">Play Again</button>
-                        </div>
+                            {time && (
+                                <div className="result">
+                                    <h3>{resultMessage}</h3>
+                                    <Button onClick={handlePlayAgain} className="play-again">Play Again</Button>
+                                </div>
+                            )}
 
                         <div className="house-pick">
                             <h3>The house picked</h3>
-                            <Button className={"button " + "house-picked " + housePicked.class} key={housePicked.id}>
-                                <div>
-                                    <img src={housePicked.img} alt={housePicked.img} />
-                                </div>
-                            </Button>
+                            {time ? (
+                                <>
+                                    <Pick className={"button " + "house-picked " + housePicked.class} key={housePicked.id}>
+                                        <div>
+                                            <img src={housePicked.img} alt={housePicked.img} />
+                                        </div>
+                                    </Pick> 
+                                </>
+                            ) : <Pick className={"button " + "house-picked " + "time "}><div><p>Loading...</p></div></Pick>}
                         </div>
                     </div>
                 :
@@ -139,15 +149,15 @@ export const Home = () => {
                             array.map((item) => {
                                 return(
                                     <>
-                                        <Button 
-                                            className={"button " + item.class} 
-                                            key={item.id} 
+                                        <Pick
+                                            className={"button " + item.class}
+                                            key={item.id}
                                             onClick={() => handlePlay(item)}
                                             >
                                             <div>
                                                 <img src={item.img} alt={item.img} />
                                             </div>
-                                        </Button>
+                                        </Pick>
                                     </>
                                 )
                             })
@@ -155,7 +165,7 @@ export const Home = () => {
                     </>
                 }
             </div>
-            
+
             <Footer />
         </div>
     )
