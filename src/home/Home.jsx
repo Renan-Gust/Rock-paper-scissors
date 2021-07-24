@@ -34,20 +34,17 @@ export const Home = () => {
         {
             id: 1,
             img: paperImg,
-            class: "paper",
-            name: "paper"
+            class: "paper"
         },
         {
             id: 0,
             img: rockImg,
-            class: "rock",
-            name: "rock"
+            class: "rock"
         },
         {
             id: 2,
             img: scissorsImg,
-            class: "scissors",
-            name: "scissors"
+            class: "scissors"
         }
     ]
 
