@@ -1,7 +1,9 @@
-export const Button = ({ children, className, onClick, }) => {
+import '../styles/button.css'
+
+export const Button = ({ children, className, onClick }) => {
     return(
-        <button className={className} onClick={onClick}>
+        <a className={className} onClick={onClick}>
             {children}
-        </button>
+        </a>
     )
 }

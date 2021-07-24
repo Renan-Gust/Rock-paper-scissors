@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 
 import { Header } from '../components/Header'
-import { Pick } from '../components/Pick'
 import { Button } from '../components/Button'
 import { Footer } from '../components/Footer'
 
@@ -115,17 +114,17 @@ export const Home = () => {
                     <div className="result-wrapper">
                         <div className="your-pick">
                             <h3>You picked</h3>
-                            <Pick className={"button " + "picked " + playerPicked} key={playerId}>
+                            <Button className={"button " + "picked " + playerPicked} key={playerId}>
                                 <div>
                                     <img src={playerImage} alt={playerImage} />
                                 </div>
-                            </Pick>
+                            </Button>
                         </div>
 
                             {time && (
                                 <div className="result">
                                     <h3>{resultMessage}</h3>
-                                    <Button onClick={handlePlayAgain} className="play-again">Play Again</Button>
+                                    <button onClick={handlePlayAgain} className="play-again">Play Again</button>
                                 </div>
                             )}
 
@@ -133,13 +132,13 @@ export const Home = () => {
                             <h3>The house picked</h3>
                             {time ? (
                                 <>
-                                    <Pick className={"button " + "house-picked " + housePicked.class} key={housePicked.id}>
+                                    <Button className={"button " + "house-picked " + housePicked.class} key={housePicked.id}>
                                         <div>
                                             <img src={housePicked.img} alt={housePicked.img} />
                                         </div>
-                                    </Pick> 
+                                    </Button> 
                                 </>
-                            ) : <Pick className={"button " + "house-picked " + "time "}><div><p>Loading...</p></div></Pick>}
+                            ) : <Button className={"button " + "house-picked " + "time "}><div><p>Loading...</p></div></Button>}
                         </div>
                     </div>
                 :
@@ -149,7 +148,7 @@ export const Home = () => {
                             array.map((item) => {
                                 return(
                                     <>
-                                        <Pick
+                                        <Button
                                             className={"button " + item.class}
                                             key={item.id}
                                             onClick={() => handlePlay(item)}
@@ -157,7 +156,7 @@ export const Home = () => {
                                             <div>
                                                 <img src={item.img} alt={item.img} />
                                             </div>
-                                        </Pick>
+                                        </Button>
                                     </>
                                 )
                             })
