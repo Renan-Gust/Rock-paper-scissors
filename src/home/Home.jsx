@@ -27,7 +27,7 @@ export const Home = () => {
 
     useEffect(() => {
         setTimeout(() => setTime(true), 3000)
-        chooseWinner()
+        // chooseWinner()
     }, [housePicked, playerWins, houseWins])
 
     const array = [
@@ -68,7 +68,7 @@ export const Home = () => {
         setTime(false)
     }
 
-    function chooseWinner() {
+    // function chooseWinner() {
         if(housePicked !== null) {
             if (housePicked.class === "paper" && playerPicked === "scissors") {
                 setPlayerWins(true)
@@ -100,7 +100,7 @@ export const Home = () => {
                 setResultMessage("Tied")
             }
         }
-    }
+    // }
 
     return(
         <div className="container">
