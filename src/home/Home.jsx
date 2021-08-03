@@ -111,7 +111,7 @@ export const Home = () => {
                     <div className="result-wrapper">
                         <div className="your-pick">
                             <h3>You picked</h3>
-                            <Button className={"button " + "picked " + playerPicked} key={playerId}>
+                            <Button className={`button picked ${playerPicked}`}>
                                 <div>
                                     <img src={playerImage} alt={playerImage} />
                                 </div>
@@ -129,13 +129,13 @@ export const Home = () => {
                             <h3>The house picked</h3>
                             {time ? (
                                 <>
-                                    <Button className={"button " + "house-picked " + housePicked.class} key={housePicked.id}>
+                                    <Button className={`button house-picked ${housePicked.class}`}>
                                         <div>
-                                            <img src={housePicked.img} alt={housePicked.img} />
+                                            <img src={housePicked.img} alt={housePicked.img}/>
                                         </div>
                                     </Button> 
                                 </>
-                            ) : <Button className={"button " + "house-picked " + "time "}><div><p>Loading...</p></div></Button>}
+                            ) : <Button className={`button house-picked time`}><div><p>Loading...</p></div></Button>}
                         </div>
                     </div>
                 :
@@ -144,17 +144,16 @@ export const Home = () => {
                         {
                             array.map((item) => {
                                 return(
-                                    <>
+                                    <div key={item.id}>
                                         <Button
-                                            className={"button " + item.class}
-                                            key={item.id}
+                                            className={`button ${item.class}`}
                                             onClick={() => handlePlay(item)}
                                             >
                                             <div>
-                                                <img src={item.img} alt={item.img} />
+                                                <img src={item.img} alt={item.img}/>
                                             </div>
                                         </Button>
-                                    </>
+                                    </div>
                                 )
                             })
                         }
